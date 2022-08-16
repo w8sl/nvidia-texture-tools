@@ -221,19 +221,19 @@ int main(int argc, char *argv[])
 		    {
                 if (!imageFromDDS(&mipmap, dds, f, m))
                     continue;
-    	
+
 			    // set output filename, if we are doing faces and/or mipmaps
 			    name.copy(output);
 			    if (faces) name.appendFormat("_face%d", f);
 			    if (mipmaps) name.appendFormat("_mipmap%d", m);
 			    name.append(savePNG ? ".png" : ".tga");
-    			
+
 			    nv::StdOutputStream stream(name.str());
 			    if (stream.isError()) {
-				    fprintf(stderr, "Error opening '%s' for writting\n", name.str());
+				    fprintf(stderr, "Error opening '%s' for writing\n", name.str());
 				    return 1;
 			    }
-    			
+
 			    nv::ImageIO::save(name.str(), stream, &mipmap);
 		    }
 	    }

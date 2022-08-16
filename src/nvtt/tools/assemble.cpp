@@ -151,19 +151,19 @@ int main(int argc, char *argv[])
 			printf("*** error, size of image '%s' does not match\n", files[i].str());
 			return 1;
 		}
-		
+
 		if (images[i].format == nv::Image::Format_ARGB)
 		{
 			hasAlpha = true;
 		}
 	}
-	
+
 	nv::StdOutputStream stream(output.str());
 	if (stream.isError()) {
-		printf("Error opening '%s' for writting\n", output.str());
+		printf("Error opening '%s' for writing\n", output.str());
 		return 1;
 	}
-	
+
 	// Output DDS header.
 	nv::DDSHeader header;
 	header.setWidth(w);
