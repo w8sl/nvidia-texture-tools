@@ -1,4 +1,8 @@
-# NVTT is discontinued
+# Basic maintainance for Overte
+
+Since we still use NVTT in the Overte project, I am doing basic maintainance for it. If you have problems or want to push changes, feel free to open issues or PRs.
+
+## NVTT has been discontinued by its original maintainer
 
 After more than 14 years maintaining and updating this library on my spare time, I've decided to officially discontinue it and focus my energy on other projects.
 
@@ -38,7 +42,7 @@ If you are looking for alternative texture compression tools and processing algo
 
 -------------------------------
 
-# NVIDIA Texture Tools [![Actions Status](https://github.com/castano/nvidia-texture-tools/workflows/build/badge.svg)](https://github.com/castano/nvidia-texture-tools/actions) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub](https://img.shields.io/badge/repo-github-green.svg)](https://github.com/castano/nvidia-texture-tools)
+# NVIDIA Texture Tools [![Actions Status](https://github.com/JulianGro/nvidia-texture-tools/workflows/build/badge.svg)](https://github.com/JulianGro/nvidia-texture-tools/actions) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub](https://img.shields.io/badge/repo-github-green.svg)](https://github.com/JulianGro/nvidia-texture-tools)
 
 The NVIDIA Texture Tools is a collection of image processing and texture 
 manipulation tools, designed to be integrated in game tools and asset 
@@ -69,15 +73,15 @@ $ sudo make install
 To use the NVIDIA Texture Tools in your own applications you just have to
 include the following header file:
 
-[src/nvtt/nvtt.h](https://github.com/castano/nvidia-texture-tools/blob/master/src/nvtt/nvtt.h)
+[src/nvtt/nvtt.h](https://github.com/JulianGro/nvidia-texture-tools/blob/master/src/nvtt/nvtt.h)
 
 And include the nvtt library in your projects. 
 
 The following file contains a simple example that shows how to use the library:
 
-[src/nvtt/tools/compress.cpp](https://github.com/castano/nvidia-texture-tools/blob/master/src/nvtt/tools/compress.cpp)
+[src/nvtt/tools/compress.cpp](https://github.com/JulianGro/nvidia-texture-tools/blob/master/src/nvtt/tools/compress.cpp)
 
 Detailed documentation of the API can be found at:
 
-https://github.com/castano/nvidia-texture-tools/wiki/ApiDocumentation
+https://github.com/JulianGro/nvidia-texture-tools/wiki/ApiDocumentation
 
