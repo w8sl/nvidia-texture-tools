@@ -1,9 +1,10 @@
 
 # Set optimal options for gcc:
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-ENDIF()
+	if(NV_SYSTEM_PROCESSOR STREQUAL "x86_64")
+		set(CMAKE_CXX_FLAGS "-march=msse3 -fPIC" CACHE STRING)
+	endif(NV_SYSTEM_PROCESSOR STREQUAL "x86_64")
+endif()
 
 IF(MSVC)
 	# Code generation flags.
