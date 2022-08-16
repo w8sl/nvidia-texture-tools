@@ -6,6 +6,8 @@ NVIDIA Texture Tools version 2.1.3
  * Make building tools and tests optional.
  * Do not use "static" archive destination.
  * Have CMake decide if builds are static or shared
+ * Get rid of the secondary Windows build mechanism
+ * Unify build artifacts
 
 NVIDIA Texture Tools version 2.1.2
  * Use ICBC as the main BC1 compressor.

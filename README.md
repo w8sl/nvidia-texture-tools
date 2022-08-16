@@ -52,11 +52,6 @@ The primary features of the library are mipmap and normal map generation, format
 conversion, and DXT compression.
 
 
-### How to build (Windows)
-
-Use the provided Visual Studio 2017 solution `project/vc2017/thekla.sln`.
-
-
 ### How to build (Linux/OSX)
 
 Use [cmake](http://www.cmake.org/) and the provided configure script:
