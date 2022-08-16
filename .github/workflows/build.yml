@@ -3,31 +3,23 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  vs2017:
-    runs-on: windows-2019
-    steps:
-    - uses: actions/checkout@v2
-    - uses: microsoft/setup-msbuild@v1.0.0
-    - name: Build Debug/x64
-      run: msbuild .\project\vc2017\nvtt.sln /property:Configuration=Debug /property:Platform=x64
-    - name: Build Debug/Win32
-      run: msbuild .\project\vc2017\nvtt.sln /property:Configuration=Debug /property:Platform=Win32
-    - name: Build Release/x64
-      run: msbuild .\project\vc2017\nvtt.sln /property:Configuration=Release /property:Platform=x64
-    - name: Build Release/Win32
-      run: msbuild .\project\vc2017\nvtt.sln /property:Configuration=Release /property:Platform=Win32
-      
-  unix:
+  build_nvtt:
+    name: "${{matrix.os}}, ${{matrix.build_type}}"
     strategy:
       matrix:
-        os: [ubuntu, macos]
-    name: ${{matrix.os}}
-    runs-on: ${{matrix.os}}-latest
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
+        build_type:
+          - debug
+          - release
+    runs-on: ${{matrix.os}}
     steps:
-    - uses: actions/checkout@v2
-    - name: make
+    - uses: actions/checkout@v3
+    - name: Configure build
       run: |
-        ./configure --debug
-        make
-        ./configure --release
-        make
+        cmake . -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+    - name: Build
+      run: |
+        cmake --build . -j$(nproc)
