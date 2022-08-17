@@ -9,6 +9,7 @@ NVIDIA Texture Tools version 2.1.3
  * Get rid of the secondary Windows build mechanism
  * Unify build artifacts
  * Fix aarch64 building
+ * Add option to not use CUDA during build
 
 NVIDIA Texture Tools version 2.1.2
  * Use ICBC as the main BC1 compressor.
