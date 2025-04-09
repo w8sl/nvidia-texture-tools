@@ -1,0 +1,119 @@
+name: nvtt release
+
+on:
+  push:
+    tags:
+      - '*'  # Triggers the workflow on version tags
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  build_nvtt:
+    name: "${{matrix.os}}, ${{matrix.build_type}}"
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-24.04-arm
+          - ubuntu-24.04
+          - ubuntu-22.04-arm
+          - ubuntu-22.04
+          - macos-latest
+          - macos-13
+          
+        build_type:
+          - release
+    runs-on: ${{matrix.os}}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Configure build
+      shell: bash
+      run: |
+        cmake . -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DCMAKE_INSTALL_PREFIX=./src/nvtt-${{matrix.os}}
+    
+    - name: Build on Posix
+      if: matrix.os != 'windows-latest'
+      shell: bash
+      run: |       
+        cmake --build . -j$(nproc)
+        make install
+        cd src
+        zip -ry nvtt-${{matrix.os}}.zip nvtt-${{matrix.os}}
+        cd ..
+    
+    - name: Build on Windows
+      if: matrix.os == 'windows-latest'
+      run: |       
+        cmake --build . --config Release --target INSTALL
+        Remove-Item ./src/nvtt-${{matrix.os}}/bin/*.dll
+        Compress-Archive -Path ./src/nvtt-${{matrix.os}} -DestinationPath ./src/nvtt-${{matrix.os}}.zip -Force
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+         name: nvtt-${{ matrix.os }}
+         path: ./src/nvtt-${{matrix.os}}.zip
+        
+  publish:
+    name: Publish
+    needs: [build_nvtt]
+    runs-on: ubuntu-latest
+    steps:
+     
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: mkdirs
+        run: |
+          mkdir dist
+          
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-macos-latest 
+          path: dist
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-macos-13 
+          path: dist
+      
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-ubuntu-24.04-arm 
+          path: dist
+      
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-ubuntu-24.04
+          path: dist
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-ubuntu-22.04-arm
+          path: dist
+      
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-ubuntu-22.04 
+          path: dist
+        
+      - uses: actions/download-artifact@v4
+        with:
+          name: nvtt-windows-latest 
+          path: dist
+       
+      - name: list
+        run: |
+           cd dist
+           ls
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+
