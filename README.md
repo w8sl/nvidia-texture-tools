@@ -1,4 +1,8 @@
-# Basic maintainance for Overte
+Repository forked from https://github.com/JulianGro/nvidia-texture-tools.
+
+Thank you for maintaining this open-source project under the MIT license!
+
+## Basic maintainance for Overte
 
 Since we still use NVTT in the Overte project, I am doing basic maintainance for it. If you have problems or want to push changes, feel free to open issues or PRs.
 
@@ -75,8 +79,3 @@ And include the nvtt library in your projects.
 The following file contains a simple example that shows how to use the library:
 
 [src/nvtt/tools/compress.cpp](https://github.com/JulianGro/nvidia-texture-tools/blob/master/src/nvtt/tools/compress.cpp)
-
-Detailed documentation of the API can be found at:
-
-https://github.com/JulianGro/nvidia-texture-tools/wiki/ApiDocumentation
-
