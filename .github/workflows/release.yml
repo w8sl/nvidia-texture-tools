@@ -21,7 +21,6 @@ jobs:
           - ubuntu-22.04-arm
           - ubuntu-22.04
           - macos-latest
-          - macos-13
           
         build_type:
           - release
@@ -72,11 +71,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: nvtt-macos-latest 
-          path: dist
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: nvtt-macos-13 
           path: dist
       
       - uses: actions/download-artifact@v4
