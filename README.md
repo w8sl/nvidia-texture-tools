@@ -1,5 +1,7 @@
 Repository forked from https://github.com/JulianGro/nvidia-texture-tools.
 
+Version updated according to the changelog, compiled using GitHub Actions (CPU-only) and tested with nvcompress on Ortho4XP
+
 Thank you for maintaining this open-source project under the MIT license!
 
 ## Basic maintainance for Overte
