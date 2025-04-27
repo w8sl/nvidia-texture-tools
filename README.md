@@ -1,12 +1,10 @@
-Repository forked from https://github.com/JulianGro/nvidia-texture-tools.
+### Repository forked from https://github.com/JulianGro/nvidia-texture-tools.
 
-Version updated according to the changelog, compiled using GitHub Actions (CPU-only) and tested nvcompress with Ortho4XP
+Version updated as per changelog, compiled with CPU only, via GitHub Actions 
+
+nvcompress tested with Ortho4XP
 
 Thank you for maintaining this open-source project under the MIT license!
-
-## Basic maintainance for Overte
-
-Since we still use NVTT in the Overte project, I am doing basic maintainance for it. If you have problems or want to push changes, feel free to open issues or PRs.
 
 ## NVTT has been discontinued by its original maintainer
 
